@@ -1,0 +1,36 @@
+  <div class="content">
+
+    <div class="form">
+      <form id="order_buttons" [formGroup]="form">
+        <mat-form-field appearance="fill" >
+          <mat-label>Select Count Elements On Page</mat-label>
+          <mat-select formControlName="selectedCountElements">
+            <mat-option
+              *ngFor="let count of countShowElementsInPage"
+              [value]="count"
+              (click)="searchCatBreeds()"
+            > {{count}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+
+    <div class="photos" *ngIf="differentBreeds else noDataRecieved">
+      <app-breed
+        *ngFor="let cat of differentBreeds |
+        paginate: { itemsPerPage: breedsByPage, currentPage: page }"
+        [catBreed]="cat">
+      </app-breed>
+    </div>
+
+    <ng-template #noDataRecieved>
+      <div class="spinner">
+        <h3> Loading... </h3>
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+
+    <div id="breed_paginations_ctn" class="pagination_block">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>

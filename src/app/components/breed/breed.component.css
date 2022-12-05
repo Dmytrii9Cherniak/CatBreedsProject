@@ -1,0 +1,10 @@
+.cat_breed_photo_ctn {
+  width: 200px;
+  height: 220px;
+  background-color: #FFCC70;
+}
+
+.cat_breed_photo_ctn img {
+  width: 100%;
+  height: 100%;
+}
