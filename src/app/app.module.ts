@@ -9,6 +9,10 @@ import { CatService } from './services/cat.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CatInterceptor } from './interceptors/cat.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {breedReducer} from "./store/breeds.reducer";
+import {BreedEffects} from "./store/breeds.effects";
+import {EffectsModule} from "@ngrx/effects";
+import {StoreModule} from "@ngrx/store";
 
 @NgModule({
   declarations: [
@@ -24,6 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     NgxPaginationModule,
+    StoreModule.forRoot({ breeds: breedReducer}),
+    EffectsModule.forRoot([BreedEffects])
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [CatService,
